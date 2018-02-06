@@ -394,8 +394,8 @@ function sumCards(arr) {
             gameBoardDealer = []
             $('#replay').hide()
             $('img').remove()
+            $('#startButton').show()
             
-            start()
         })
     }
     return num
