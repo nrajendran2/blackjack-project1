@@ -78,6 +78,7 @@ const cards = [
         image: '',
         value: 10
     },
+    //Diamonds
     {
         suit: "diamonds",
         name: "ace",
@@ -156,6 +157,7 @@ const cards = [
         image: '',
         value: 10
     },
+    //CLubs
     {
         suit: "clubs",
         name: "ace",
@@ -314,32 +316,65 @@ const cards = [
     }
 ];
 
-const gameBoard = [];
+
+//Setting up game board for dealer
+const gameBoardDealer = [];
+let randNum = Math.floor(Math.random() * cards.length)
+gameBoardDealer.push(cards[randNum])
+
+//Setting up game board for player
+const gameBoardPlayer = [];
+randNum = Math.floor(Math.random() * cards.length)
+gameBoardPlayer.push(cards[randNum])
+dealToPlayer();
+dealToDealer();
 
 
+//Function to dispense cards to player
+function dealToDealer() {
 
-function deal(){
-    let num = Math.floor(Math.random()*cards.length)
-    gameBoard.forEach(($each)=>{
-        if(cards[num] !== gameBoard[$each]){
-            console.log(gameBoard.push(cards[num]))
-            console.log(gameBoard)
+    gameBoardDealer.forEach(($each) => {
+        randNum = Math.floor(Math.random() * cards.length)
+
+        if (cards[randNum].name !== gameBoardDealer[$each] && cards[randNum].name !== gameBoardPlayer[$each] && cards[randNum].suit !== gameBoardDealer[$each] && cards[randNum].suit !== gameBoardPlayer[$each]) {
+            gameBoardDealer.push(cards[randNum])
+
+            console.log(gameBoardDealer)
+        }
+        else {
+            this()
         }
     })
-} 
-console.log(deal())
+}
 
-function start(){
-    $('#start').on('click', ()=>{
+
+//Function to dispense cards to player
+function dealToPlayer() {
+
+    gameBoardPlayer.forEach(($each) => {
+        randNum = Math.floor(Math.random() * cards.length)
+
+        if (cards[randNum].name !== gameBoardPlayer[$each] && cards[randNum].name !== gameBoardDealer[$each] && cards[randNum].suit !== gameBoardPlayer[$each] && cards[randNum].suit !== gameBoardDealer[$each]) {
+            gameBoardPlayer.push(cards[randNum])
+
+            console.log(gameBoardPlayer)
+        }
+        else {
+            this();
+        }
+    })
+}
+
+
+
+function start() {
+    $('#start').on('click', () => {
         setBoard();
     })
 }
 
-function setBoard(){
-    // $('#start').hide()
-    // console.log(cards)
-
-
+function setBoard() {
+    $('#start').hide()
 }
 
-start();
+start()
