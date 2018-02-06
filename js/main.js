@@ -349,7 +349,7 @@ function deal(arr) {
 
             console.log(arr)
             sumCards(gameBoardPlayer);
-         
+
             break;
         }
         else {
@@ -364,13 +364,17 @@ function deal(arr) {
 //////////////////////////////////////////////////////////////
 //LOGIC FOR GAMEPLAY
 //The dealer's turn 
-function dealerTurn(){
+function dealerTurn() {
     sumCards(gameBoardDealer)
-    if(sumCards(gameBoardDealer) < 21){
+    if (sumCards(gameBoardDealer) <= 14) {
+        alert('The dealer hits')
         deal(gameBoardDealer)
         $('#dealer').prepend($('<img />'))
-        $('img').first().attr('src', gameBoardDealer[gameBoardDealer.length -1].image)
+        $('img').first().attr('src', gameBoardDealer[gameBoardDealer.length - 1].image)
         console.log(gameBoardDealer)
+    }
+    else if (sumCards(gameBoardDealer) > 14) {
+        alert('The dealer stands')
     }
 }
 
@@ -382,7 +386,7 @@ function sumCards(arr) {
         num += arr[i].value
     }
     if (num > 21 && arr === gameBoardPlayer) {
-        alert("Busted")
+        alert("Busted, you have lost the game, and the dealer takes all")
     }
     return num
 }
@@ -399,6 +403,14 @@ function hit(arr) {
 
 document.getElementById('hitButton').addEventListener('click', hit(gameBoardPlayer))
 
+//Function for stand button
+function stand() {
+    document.getElementById('standButton').addEventListener('click', () => {
+        dealerTurn()
+    })
+}
+
+document.getElementById('standButton').addEventListener('click', stand())
 
 
 
@@ -429,9 +441,9 @@ console.log(gameBoardPlayer)
 
 //Function that adds card to player board
 function setPlayerCard() {
-        $('#player').append($('<img />'))
-        $('img').last().attr('src', gameBoardPlayer[gameBoardPlayer.length -1].image)
-    
+    $('#player').append($('<img />'))
+    $('img').last().attr('src', gameBoardPlayer[gameBoardPlayer.length - 1].image)
+
 }
 start()
 
