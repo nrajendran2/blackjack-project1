@@ -363,6 +363,17 @@ function deal(arr) {
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 //LOGIC FOR GAMEPLAY
+//The dealer's turn 
+function dealerTurn(){
+    sumCards(gameBoardDealer)
+    if(sumCards(gameBoardDealer) < 21){
+        deal(gameBoardDealer)
+        $('#dealer').prepend($('<img />'))
+        $('img').first().attr('src', gameBoardDealer[gameBoardDealer.length -1].image)
+        console.log(gameBoardDealer)
+    }
+}
+
 //Function to sum game cards for losing conditions 
 function sumCards(arr) {
     let num = 0;
@@ -370,20 +381,23 @@ function sumCards(arr) {
     for (i = 0; i < arr.length; i++) {
         num += arr[i].value
     }
-    if (num > 21) {
+    if (num > 21 && arr === gameBoardPlayer) {
         alert("Busted")
     }
+    return num
 }
 
 //Function for hit button 
 
-function hit() {
+function hit(arr) {
     document.getElementById('hitButton').addEventListener('click', () => {
-        deal(gameBoardPlayer)
+        deal(arr)
+        setPlayerCard()
+        dealerTurn()
     })
 }
 
-document.getElementById('hitButton').addEventListener('click', hit())
+document.getElementById('hitButton').addEventListener('click', hit(gameBoardPlayer))
 
 
 
@@ -413,12 +427,11 @@ function start() {
 
 console.log(gameBoardPlayer)
 
-//Function that adds card to game
-function setCard(arr) {
-    if (arr === gameBoardPlayer) {
+//Function that adds card to player board
+function setPlayerCard() {
         $('#player').append($('<img />'))
-        $('img').attr('src', gameBoardPlayer[i].image)
-    }
+        $('img').last().attr('src', gameBoardPlayer[gameBoardPlayer.length -1].image)
+    
 }
 start()
 
