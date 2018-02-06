@@ -326,15 +326,16 @@ const cards = [
 //LOGIC FOR GAME START
 //Setting up game board for dealer
 const gameBoardDealer = [];
-let randNum = Math.floor(Math.random() * cards.length)
-gameBoardDealer.push(cards[randNum])
+let randNum = 0
+// randNum = Math.floor(Math.random() * cards.length)
+// gameBoardDealer.push(cards[randNum])
 
 //Setting up game board for player
 const gameBoardPlayer = [];
-randNum = Math.floor(Math.random() * cards.length)
-gameBoardPlayer.push(cards[randNum])
-deal(gameBoardPlayer);
-deal(gameBoardDealer);
+// randNum = Math.floor(Math.random() * cards.length)
+// gameBoardPlayer.push(cards[randNum])
+// deal(gameBoardPlayer);
+// deal(gameBoardDealer);
 
 
 
@@ -387,6 +388,8 @@ function sumCards(arr) {
     }
     if (num > 21 && arr === gameBoardPlayer) {
         alert("Busted, you have lost the game, and the dealer takes all")
+        $('#player').append($('<button id="replay">Replay?</button>'))
+        start()
     }
     return num
 }
@@ -421,6 +424,14 @@ document.getElementById('standButton').addEventListener('click', stand())
 //Function that sets board and starts game
 function start() {
     $('#startButton').on('click', () => {
+        randNum = Math.floor(Math.random() * cards.length)
+        gameBoardDealer.push(cards[randNum])
+
+        randNum = Math.floor(Math.random() * cards.length)
+        gameBoardPlayer.push(cards[randNum])
+
+        deal(gameBoardPlayer);
+        deal(gameBoardDealer);
 
         for (i = 0; i < gameBoardPlayer.length; i++) {
             $('#startButton').hide()
