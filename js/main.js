@@ -1,322 +1,329 @@
+
+//The 52 card deck as an object array
 const cards = [
     //HEARTS
     {
         suit: "hearts",
         name: "ace",
-        image: '',
+        image: 'images/AH.png',
         value: 11
     },
     {
         suit: "hearts",
         name: "two",
-        image: '',
+        image: 'images/2H.png',
         value: 2
     },
     {
         suit: "hearts",
         name: "three",
-        image: '',
+        image: 'images/3H.png',
         value: 3
     },
     {
         suit: "hearts",
         name: "four",
-        image: '',
+        image: 'images/4H.png',
         value: 4
     },
     {
         suit: "hearts",
         name: "five",
-        image: '',
+        image: 'images/5H.png',
         value: 5
     },
     {
         suit: "hearts",
         name: "six",
-        image: '',
+        image: 'images/6H.png',
         value: 6
     },
     {
         suit: "hearts",
         name: "seven",
-        image: '',
+        image: 'images/7H.png',
         value: 7
     },
     {
         suit: "hearts",
         name: "eight",
-        image: '',
+        image: 'images/8H.png',
         value: 8
     },
     {
         suit: "hearts",
         name: "nine",
-        image: '',
+        image: 'images/9H.png',
         value: 9
     },
     {
         suit: "hearts",
         name: "ten",
-        image: '',
+        image: 'images/10H.png',
         value: 10
     },
     {
         suit: "hearts",
         name: "jack",
-        image: '',
+        image: 'images/JH.png',
         value: 10
     },
     {
         suit: "hearts",
         name: "queen",
-        image: '',
+        image: 'images/QH.png',
         value: 10
     },
     {
         suit: "hearts",
         name: "king",
-        image: '',
+        image: 'images/KH.png',
         value: 10
     },
     //Diamonds
     {
         suit: "diamonds",
         name: "ace",
-        image: '',
+        image: 'images/AD.png',
         value: 11
     },
     {
         suit: "diamonds",
         name: "two",
-        image: '',
+        image: 'images/2D.png',
         value: 2
     },
     {
         suit: "diamonds",
         name: "three",
-        image: '',
+        image: 'images/3D.png',
         value: 3
     },
     {
         suit: "diamonds",
         name: "four",
-        image: '',
+        image: 'images/4D.png',
         value: 4
     },
     {
         suit: "diamonds",
         name: "five",
-        image: '',
+        image: 'images/5D.png',
         value: 5
     },
     {
         suit: "diamonds",
         name: "six",
-        image: '',
+        image: 'images/6D.png',
         value: 6
     },
     {
         suit: "diamonds",
         name: "seven",
-        image: '',
+        image: 'images/7D.png',
         value: 7
     },
     {
         suit: "diamonds",
         name: "eight",
-        image: '',
+        image: 'images/8D.png',
         value: 8
     },
     {
         suit: "diamonds",
         name: "nine",
-        image: '',
+        image: 'images/9D.png',
         value: 9
     },
     {
         suit: "diamonds",
         name: "ten",
-        image: '',
+        image: 'images/10D.png',
         value: 10
     },
     {
         suit: "diamonds",
         name: "jack",
-        image: '',
+        image: 'images/JD.png',
         value: 10
     },
     {
         suit: "diamonds",
         name: "queen",
-        image: '',
+        image: 'images/QD.png',
         value: 10
     },
     {
         suit: "diamonds",
         name: "king",
-        image: '',
+        image: 'images/KD.png',
         value: 10
     },
-    //CLubs
+    //Clubs
     {
         suit: "clubs",
         name: "ace",
-        image: '',
+        image: 'images/AC.png',
         value: 11
     },
     {
         suit: "clubs",
         name: "two",
-        image: '',
+        image: 'images/2C.png',
         value: 2
     },
     {
         suit: "clubs",
         name: "three",
-        image: '',
+        image: 'images/3C.png',
         value: 3
     },
     {
         suit: "clubs",
         name: "four",
-        image: '',
+        image: 'images/4C.png',
         value: 4
     },
     {
         suit: "clubs",
         name: "five",
-        image: '',
+        image: 'images/5C.png',
         value: 5
     },
     {
         suit: "clubs",
         name: "six",
-        image: '',
+        image: 'images/6C.png',
         value: 6
     },
     {
         suit: "clubs",
         name: "seven",
-        image: '',
+        image: 'images/7C.png',
         value: 7
     },
     {
         suit: "clubs",
         name: "eight",
-        image: '',
+        image: 'images/8C.png',
         value: 8
     },
     {
         suit: "clubs",
         name: "nine",
-        image: '',
+        image: 'images/9C.png',
         value: 9
     },
     {
         suit: "clubs",
         name: "ten",
-        image: '',
+        image: 'images/10C.png',
         value: 10
     },
     {
         suit: "clubs",
         name: "jack",
-        image: '',
+        image: 'images/JC.png',
         value: 10
     },
     {
         suit: "clubs",
         name: "queen",
-        image: '',
+        image: 'images/QC.png',
         value: 10
     },
     {
         suit: "clubs",
         name: "king",
-        image: '',
+        image: 'images/KC.png',
         value: 10
     },
+    //Spades
     {
         suit: "spades",
         name: "ace",
-        image: '',
+        image: 'images/AS.png',
         value: 11
     },
     {
         suit: "spades",
         name: "two",
-        image: '',
+        image: 'images/2S.png',
         value: 2
     },
     {
         suit: "spades",
         name: "three",
-        image: '',
+        image: 'images/3S.png',
         value: 3
     },
     {
         suit: "spades",
         name: "four",
-        image: '',
+        image: 'images/4S.png',
         value: 4
     },
     {
         suit: "spades",
         name: "five",
-        image: '',
+        image: 'images/5S.png',
         value: 5
     },
     {
         suit: "spades",
         name: "six",
-        image: '',
+        image: 'images/6S.png',
         value: 6
     },
     {
         suit: "spades",
         name: "seven",
-        image: '',
+        image: 'images/7S.png',
         value: 7
     },
     {
         suit: "spades",
         name: "eight",
-        image: '',
+        image: 'images/8S.png',
         value: 8
     },
     {
         suit: "spades",
         name: "nine",
-        image: '',
+        image: 'images/9S.png',
         value: 9
     },
     {
         suit: "spades",
         name: "ten",
-        image: '',
+        image: 'images/10S.png',
         value: 10
     },
     {
         suit: "spades",
         name: "jack",
-        image: '',
+        image: 'images/JS.png',
         value: 10
     },
     {
         suit: "spades",
         name: "queen",
-        image: '',
+        image: 'images/QS.png',
         value: 10
     },
     {
         suit: "spades",
         name: "king",
-        image: '',
+        image: 'images/KS.png',
         value: 10
     }
 ];
 
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
+//LOGIC FOR GAME START
 //Setting up game board for dealer
 const gameBoardDealer = [];
 let randNum = Math.floor(Math.random() * cards.length)
@@ -326,55 +333,95 @@ gameBoardDealer.push(cards[randNum])
 const gameBoardPlayer = [];
 randNum = Math.floor(Math.random() * cards.length)
 gameBoardPlayer.push(cards[randNum])
-dealToPlayer();
-dealToDealer();
+deal(gameBoardPlayer);
+deal(gameBoardDealer);
 
 
-//Function to dispense cards to player
-function dealToDealer() {
 
-    gameBoardDealer.forEach(($each) => {
+//Function to dispense cards 
+function deal(arr) {
+
+    for (i = 0; i < arr.length; i++) {
         randNum = Math.floor(Math.random() * cards.length)
 
-        if (cards[randNum].name !== gameBoardDealer[$each] && cards[randNum].name !== gameBoardPlayer[$each] && cards[randNum].suit !== gameBoardDealer[$each] && cards[randNum].suit !== gameBoardPlayer[$each]) {
-            gameBoardDealer.push(cards[randNum])
+        if (cards[randNum].name !== arr[i].name && cards[randNum].name !== gameBoardDealer[i].name && cards[randNum].suit !== arr[i].suit && cards[randNum].suit !== gameBoardDealer[i].suit) {
+            arr.push(cards[randNum])
 
-            console.log(gameBoardDealer)
+            console.log(arr)
+            sumCards(gameBoardPlayer);
+         
+            break;
         }
         else {
-            this()
+            i -= 1;
         }
+
+    }
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//LOGIC FOR GAMEPLAY
+//Function to sum game cards for losing conditions 
+function sumCards(arr) {
+    let num = 0;
+
+    for (i = 0; i < arr.length; i++) {
+        num += arr[i].value
+    }
+    if (num > 21) {
+        alert("Busted")
+    }
+}
+
+//Function for hit button 
+
+function hit() {
+    document.getElementById('hitButton').addEventListener('click', () => {
+        deal(gameBoardPlayer)
     })
 }
 
-
-//Function to dispense cards to player
-function dealToPlayer() {
-
-    gameBoardPlayer.forEach(($each) => {
-        randNum = Math.floor(Math.random() * cards.length)
-
-        if (cards[randNum].name !== gameBoardPlayer[$each] && cards[randNum].name !== gameBoardDealer[$each] && cards[randNum].suit !== gameBoardPlayer[$each] && cards[randNum].suit !== gameBoardDealer[$each]) {
-            gameBoardPlayer.push(cards[randNum])
-
-            console.log(gameBoardPlayer)
-        }
-        else {
-            this();
-        }
-    })
-}
+document.getElementById('hitButton').addEventListener('click', hit())
 
 
 
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//USER INTERACTIVITY
+//Function that sets board and starts game
 function start() {
-    $('#start').on('click', () => {
-        setBoard();
+    $('#startButton').on('click', () => {
+
+        for (i = 0; i < gameBoardPlayer.length; i++) {
+            $('#startButton').hide()
+            $('#player').append($('<img />'))
+            $('img').eq(i).attr('src', gameBoardPlayer[i].image)
+        }
+        for (i = 0; i < gameBoardDealer.length; i++) {
+            $('#dealer').append($('<img />'))
+            $('img').eq(i).attr('src', gameBoardDealer[i].image)
+        }
     })
 }
 
-function setBoard() {
-    $('#start').hide()
-}
 
+
+
+console.log(gameBoardPlayer)
+
+//Function that adds card to game
+function setCard(arr) {
+    if (arr === gameBoardPlayer) {
+        $('#player').append($('<img />'))
+        $('img').attr('src', gameBoardPlayer[i].image)
+    }
+}
 start()
+
+
+
+
