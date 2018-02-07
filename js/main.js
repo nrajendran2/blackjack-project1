@@ -324,18 +324,13 @@ const cards = [
 //////////////////////////////////////////////////////////////
 
 //LOGIC FOR GAME START
-//Setting up game board for dealer
-let gameBoardDealer = [];
-let randNum = 0
-// randNum = Math.floor(Math.random() * cards.length)
-// gameBoardDealer.push(cards[randNum])
 
-//Setting up game board for player
+let gameBoardDealer = [];
+let randNum = 0;
 let gameBoardPlayer = [];
-// randNum = Math.floor(Math.random() * cards.length)
-// gameBoardPlayer.push(cards[randNum])
-// deal(gameBoardPlayer);
-// deal(gameBoardDealer);
+let dealStand = false;
+let playerStand = false;
+
 
 
 
@@ -347,6 +342,7 @@ function deal(arr) {
 
         if (cards[randNum].name !== arr[i].name && cards[randNum].name !== gameBoardDealer[i].name && cards[randNum].suit !== arr[i].suit && cards[randNum].suit !== gameBoardDealer[i].suit) {
             arr.push(cards[randNum])
+            //
 
             console.log(arr)
             sumCards(gameBoardPlayer);
@@ -360,43 +356,75 @@ function deal(arr) {
     }
 }
 
+
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 //LOGIC FOR GAMEPLAY
+//function to determine winner if both stand
+
+function replay(){
+    $('#dealer').append($('<button id="replay">Replay?</button>'))
+    $('#replay').on('click', ()=>{
+        gameBoardPlayer = [];
+        gameBoardDealer = [];
+        randNum = 0;
+        dealStand = false;
+        playerStand = false;
+        $('#replay').remove()
+        $('img').remove()
+        $('#startButton').show()
+        
+    })
+}
+
+function winGame(){
+    if(playerStand === true && dealStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)){
+        alert("The dealer has won")
+        replay()
+    }
+    else if(playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)){
+        alert("You have defeated the dealer!")
+        replay()
+    }
+    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)){
+        alert("The game is a tie")
+        replay()
+    }
+}
+
+
 //The dealer's turn 
 function dealerTurn() {
     sumCards(gameBoardDealer)
     if (sumCards(gameBoardDealer) <= 14) {
-        alert('The dealer hits')
         deal(gameBoardDealer)
+        alert('The dealer hits')
         $('#dealer').prepend($('<img />'))
         $('img').first().attr('src', gameBoardDealer[gameBoardDealer.length - 1].image)
         console.log(gameBoardDealer)
     }
     else if (sumCards(gameBoardDealer) > 14) {
+        dealStand = true;
         alert('The dealer stands')
+        winGame()
+        // if(playerStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)){
+        //     alert("The dealer has won")
+        // }
+        // else if(playerStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)){
+        //     alert("You have defeated the dealer!")
+        // }
+        // else if (playerStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)){
+        //     alert("The game is a tie")
+        // }
     }
 }
 
 //Function to sum game cards for losing conditions 
 function sumCards(arr) {
     let num = 0;
-
     for (i = 0; i < arr.length; i++) {
         num += arr[i].value
-    }
-    if (num > 21 && arr === gameBoardPlayer) {
-        alert("Busted, you have lost the game, and the dealer takes all")
-        $('#player').append($('<button id="replay">Replay?</button>'))
-        $('#replay').on('click', ()=>{
-            gameBoardPlayer = []
-            gameBoardDealer = []
-            $('#replay').hide()
-            $('img').remove()
-            $('#startButton').show()
-            
-        })
     }
     return num
 }
@@ -407,7 +435,14 @@ function hit(arr) {
     document.getElementById('hitButton').addEventListener('click', () => {
         deal(arr)
         setPlayerCard()
+        if(sumCards(gameBoardPlayer) > 21){
+            alert("You have gone bust!")
+            replay()
+            
+        }
+        else if(sumCards(gameBoardPlayer) <= 21){
         dealerTurn()
+        }
     })
 }
 
@@ -416,7 +451,9 @@ document.getElementById('hitButton').addEventListener('click', hit(gameBoardPlay
 //Function for stand button
 function stand() {
     document.getElementById('standButton').addEventListener('click', () => {
+        playerStand = true
         dealerTurn()
+        
     })
 }
 
