@@ -340,16 +340,14 @@ function deal(arr) {
     for (i = 0; i < arr.length; i++) {
         randNum = Math.floor(Math.random() * cards.length)
 
-        if (cards[randNum].name !== arr[i].name && cards[randNum].name !== gameBoardDealer[i].name && cards[randNum].suit !== arr[i].suit && cards[randNum].suit !== gameBoardDealer[i].suit) {
+        if (cards[randNum].image !== arr[i].image && cards[randNum].image !== gameBoardDealer[i].image && cards[randNum].image !== gameBoardPlayer[i].image) {
             arr.push(cards[randNum])
             //
-
-            console.log(arr)
             sumCards(gameBoardPlayer);
-
+            console.log(arr)
             break;
         }
-        else {
+        else if (cards[randNum].image === arr[i].image || cards[randNum].image === gameBoardDealer[i].image || cards[randNum].image === gameBoardPlayer[i].image){
             i -= 1;
         }
 
@@ -363,31 +361,34 @@ function deal(arr) {
 //LOGIC FOR GAMEPLAY
 //function to determine winner if both stand
 
-function replay(){
+function replay() {
+
+    $('#hitButton').css('visibility', 'hidden')
+    $('#standButton').css('visibility', 'hidden')
     $('#dealer').append($('<button id="replay">Replay?</button>'))
-    $('#replay').on('click', ()=>{
+    $('#replay').on('click', () => {
+        $('#replay').remove()
+        $('img').remove()
+        $('#startButton').show()
         gameBoardPlayer = [];
         gameBoardDealer = [];
         randNum = 0;
         dealStand = false;
         playerStand = false;
-        $('#replay').remove()
-        $('img').remove()
-        $('#startButton').show()
-        
+
     })
 }
 
-function winGame(){
-    if(playerStand === true && dealStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)){
+function standWin() {
+    if (playerStand === true && dealStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)) {
         alert("The dealer has won")
         replay()
     }
-    else if(playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)){
+    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)) {
         alert("You have defeated the dealer!")
         replay()
     }
-    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)){
+    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)) {
         alert("The game is a tie")
         replay()
     }
@@ -407,16 +408,7 @@ function dealerTurn() {
     else if (sumCards(gameBoardDealer) > 14) {
         dealStand = true;
         alert('The dealer stands')
-        winGame()
-        // if(playerStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)){
-        //     alert("The dealer has won")
-        // }
-        // else if(playerStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)){
-        //     alert("You have defeated the dealer!")
-        // }
-        // else if (playerStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)){
-        //     alert("The game is a tie")
-        // }
+        standWin()
     }
 }
 
@@ -435,13 +427,13 @@ function hit(arr) {
     document.getElementById('hitButton').addEventListener('click', () => {
         deal(arr)
         setPlayerCard()
-        if(sumCards(gameBoardPlayer) > 21){
+        if (sumCards(gameBoardPlayer) > 21) {
             alert("You have gone bust!")
             replay()
-            
+
         }
-        else if(sumCards(gameBoardPlayer) <= 21){
-        dealerTurn()
+        else if (sumCards(gameBoardPlayer) <= 21) {
+            dealerTurn()
         }
     })
 }
@@ -453,12 +445,11 @@ function stand() {
     document.getElementById('standButton').addEventListener('click', () => {
         playerStand = true
         dealerTurn()
-        
+
     })
 }
 
 document.getElementById('standButton').addEventListener('click', stand())
-
 
 
 //////////////////////////////////////////////////////////////
@@ -468,6 +459,9 @@ document.getElementById('standButton').addEventListener('click', stand())
 //Function that sets board and starts game
 function start() {
     $('#startButton').on('click', () => {
+        $('#startButton').hide()
+        $('#hitButton').css('visibility', 'visible')
+        $('#standButton').css('visibility', 'visible')
         randNum = Math.floor(Math.random() * cards.length)
         gameBoardDealer.push(cards[randNum])
 
@@ -477,8 +471,8 @@ function start() {
         deal(gameBoardPlayer);
         deal(gameBoardDealer);
 
+
         for (i = 0; i < gameBoardPlayer.length; i++) {
-            $('#startButton').hide()
             $('#player').append($('<img />'))
             $('img').eq(i).attr('src', gameBoardPlayer[i].image)
         }
@@ -492,7 +486,6 @@ function start() {
 
 
 
-console.log(gameBoardPlayer)
 
 //Function that adds card to player board
 function setPlayerCard() {
