@@ -11,11 +11,17 @@ h1{
     color: rgb(255, 213, 0);
     text-shadow: 5px 5px 5px black;
 }
+#cards{
+    display: flex;
+    flex-direction: column;
+}
 
+/* Affects start button */
 #menu{
     display:flex;
     justify-content: center;
     align-items: center;
+
     flex-direction: column;
 }
 
@@ -27,8 +33,6 @@ button{
     border-radius: 3px;
     font-size: 40px;
     margin: 20px;
-
-    
 }
 
 body{
@@ -74,6 +78,7 @@ p{
     text-shadow: 5px 5px 5px black;
     font-family: 'Creepster', cursive;
     font-size: 50px;
+    position: absolute;
 
 
 
@@ -81,20 +86,22 @@ p{
 
 #gameBoard{
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-
+    justify-content: space-between;
 }
 
 #player, #dealer{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
 }
 
+
+/* Affects hit and stand buttons */
 #gameButtons{
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: flex-end;
+    flex-direction: row;
+    position: ;
 }
