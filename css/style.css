@@ -1,5 +1,7 @@
+
+
 img{
-    width: 20vw;
+    width: 150px;
 }
 
 h1{
@@ -24,6 +26,7 @@ button{
     border: none;
     border-radius: 3px;
     font-size: 40px;
+    margin: 20px;
 
     
 }
@@ -74,4 +77,24 @@ p{
 
 
 
+}
+
+#gameBoard{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+#player, #dealer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#gameButtons{
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
