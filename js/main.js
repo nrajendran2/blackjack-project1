@@ -347,7 +347,7 @@ function deal(arr) {
             console.log(arr)
             break;
         }
-        else if (cards[randNum].image === arr[i].image || cards[randNum].image === gameBoardDealer[i].image || cards[randNum].image === gameBoardPlayer[i].image){
+        else if (cards[randNum].image === arr[i].image || cards[randNum].image === gameBoardDealer[i].image || cards[randNum].image === gameBoardPlayer[i].image) {
             i -= 1;
         }
 
@@ -365,8 +365,12 @@ function replay() {
 
     $('#hitButton').css('visibility', 'hidden')
     $('#standButton').css('visibility', 'hidden')
-    $('#dealer').append($('<button id="replay">Replay?</button>'))
+    $('#menu').append($('<button id="replay">Replay?</button>'))
     $('#replay').on('click', () => {
+        $('body').css('background-image', 'url(http://moziru.com/images/wild-west-clipart-western-background-16.jpg)')
+        $('body').css('background-position', 'center')
+        $('h1').css('font-size', '100px')
+
         $('#replay').remove()
         $('img').remove()
         $('#startButton').show()
@@ -375,21 +379,29 @@ function replay() {
         randNum = 0;
         dealStand = false;
         playerStand = false;
+        console.log("NEW GMAE")
+        console.log("n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n")
 
     })
 }
 
 function standWin() {
     if (playerStand === true && dealStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)) {
-        alert("The dealer has won")
+        // alert("The dealer has won")
+        $("#messages").text("The Dealer Has Won").fadeIn(3000);
+        $("#messages").fadeOut(3000);
         replay()
     }
     else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)) {
-        alert("You have defeated the dealer!")
+        // alert("You have defeated the dealer!")
+        $("#messages").text("You Have Defeated The Dealer").fadeIn(3000);
+        $("#messages").fadeOut(3000);
         replay()
     }
     else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)) {
-        alert("The game is a tie")
+        // alert("The game is a tie")
+        $("#messages").text("Tie").fadeIn(3000);
+        $("#messages").fadeOut(3000);
         replay()
     }
 }
@@ -400,15 +412,23 @@ function dealerTurn() {
     sumCards(gameBoardDealer)
     if (sumCards(gameBoardDealer) <= 14) {
         deal(gameBoardDealer)
-        alert('The dealer hits')
+        // alert('The dealer hits')
+        $("#messages").text("The Dealer Hits").fadeIn(3000);
+        $("#messages").fadeOut(3000);
+
         $('#dealer').prepend($('<img />'))
         $('img').first().attr('src', gameBoardDealer[gameBoardDealer.length - 1].image)
         console.log(gameBoardDealer)
+
     }
     else if (sumCards(gameBoardDealer) > 14) {
         dealStand = true;
-        alert('The dealer stands')
+        // alert('The dealer stands')
+        $("#messages").text("The Dealer Stands").fadeIn(3000);
+        $("#messages").fadeOut(3000);
+
         standWin()
+
     }
 }
 
@@ -428,7 +448,9 @@ function hit(arr) {
         deal(arr)
         setPlayerCard()
         if (sumCards(gameBoardPlayer) > 21) {
-            alert("You have gone bust!")
+            // alert("You have gone bust!")
+            $("#messages").text("You Have Gone Bust").fadeIn(3000);
+            $("#messages").fadeOut(3000);
             replay()
 
         }
@@ -460,13 +482,19 @@ document.getElementById('standButton').addEventListener('click', stand())
 function start() {
     $('#startButton').on('click', () => {
         $('#startButton').hide()
+        $('body').css('background-image', 'url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4661956.jpg)')
+        $('body').css('background-position', 'center top')
+        $('h1').css('font-size', '30px')
+
         $('#hitButton').css('visibility', 'visible')
         $('#standButton').css('visibility', 'visible')
         randNum = Math.floor(Math.random() * cards.length)
         gameBoardDealer.push(cards[randNum])
 
         randNum = Math.floor(Math.random() * cards.length)
-        gameBoardPlayer.push(cards[randNum])
+        if (cards[randNum] !== gameBoardDealer[0]) {
+            gameBoardPlayer.push(cards[randNum])
+        }
 
         deal(gameBoardPlayer);
         deal(gameBoardDealer);
@@ -493,6 +521,16 @@ function setPlayerCard() {
     $('img').last().attr('src', gameBoardPlayer[gameBoardPlayer.length - 1].image)
 
 }
+
+function wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
+
+
 start()
 
 
