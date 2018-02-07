@@ -88,13 +88,13 @@ p{
 
 #player, #dealer{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
 }
 
 #gameButtons{
     display: flex;
-    justify-content: left;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
