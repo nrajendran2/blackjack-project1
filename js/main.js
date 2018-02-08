@@ -389,16 +389,19 @@ function standWin() {
     if (playerStand === true && dealStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)) {
         // alert("The dealer has won")
         $("#messages").text("The Dealer Has Won").fadeIn(3000);
+        flip()
         replay()
     }
     else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)) {
         // alert("You have defeated the dealer!")
         $("#messages").text("You Have Defeated The Dealer").fadeIn(3000);
+        flip()
         replay()
     }
     else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)) {
         // alert("The game is a tie")
         $("#messages").text("Tie").fadeIn(3000);
+        flip()
         replay()
     }
 }
@@ -447,6 +450,7 @@ function hit(arr) {
         if (sumCards(gameBoardPlayer) > 21) {
             // alert("You have gone bust!")
             $("#messages").text("You Have Gone Bust").fadeIn(3000);
+            flip()
             replay()
 
         }
@@ -505,6 +509,7 @@ function start() {
             $('#dealer').append($('<img />'))
             if (i === 0) {
                 $('img').eq(i).attr('src', 'images/blue_back.png')
+                $('img').eq(i).attr('id','back')
 
             }
             else {
@@ -525,6 +530,10 @@ function setPlayerCard() {
     $('#player').append($('<img />'))
     $('img').last().attr('src', gameBoardPlayer[gameBoardPlayer.length - 1].image)
 
+}
+
+function flip(){
+    $('#back').attr('src', gameBoardDealer[0].image)
 }
 
 // $(document).ready(function(){
