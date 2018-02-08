@@ -82,7 +82,6 @@ body{
     color: rgb(255, 0, 0);
     text-shadow: 5px 5px 5px black;
     font-size: 40px;
-    
 
 
 }
@@ -111,6 +110,8 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
 #player, #dealer{
@@ -129,33 +130,49 @@ body{
     flex-direction: column;
 }
 
-@media (max-width: 500px){
+
+
+@media (max-width: 800px){
     img{
-        width: 20vw;
+        width: 125px;
     }
     h1{
         font-size: 5em;
         margin-top: 100px;
     }
     button, #score{
-        font-size: 1.75em;
+        font-size: 1.5em;
     }
     #gameBoard{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
     }
+    #gameButtons{
+        flex-direction: row;
+    }
     #startButton{
         margin-left: 0;
         margin-top: 100px;
     }
     #header{
-        display: none;
+        /* display: none; */
+        margin-top: 0;
     }
     #messages{
         margin-left: 70px;
         margin-top: 200px;
         font-size: 3em;
     }
+    /* #footer{
+        visibility: hidden;
+    } */
 
+}
+
+
+@media (max-width: 550px){
+    img{
+        width: 25vw;
+    }
 }
