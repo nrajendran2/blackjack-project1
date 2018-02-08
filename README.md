@@ -3,7 +3,7 @@ This is a game of Black Jack, the stakes are high, and the winner takes all.
 Defeat the dealer, the greediest man in town. He slings all the cards, so play for your life.
 
 
-Press start to begin the game, a score will be set for number of wins against the dealer,
+Press start to begin the game, a score will be set for your card count against the dealer,
 and two cards will be dispersed to you and the dealer each.
 
 The goal is to get as close to 21 as possible without going bust! 
