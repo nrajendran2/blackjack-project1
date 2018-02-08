@@ -393,7 +393,7 @@ function standWin() {
         flip()
         replay()
     }
-    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer) || sumCards(gameBoardDealer) > 21) {
+    else if ((playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)) || sumCards(gameBoardDealer) > 21) {
         // alert("You have defeated the dealer!")
         $("#messages").text("You Have Defeated The Dealer").fadeIn(3000);
         flip()
@@ -420,6 +420,7 @@ function dealerTurn() {
         $('#dealer').prepend($('<img />'))
         $('img').first().attr('src', gameBoardDealer[gameBoardDealer.length - 1].image)
         console.log(gameBoardDealer)
+        standWin()
 
     }
     else if (sumCards(gameBoardDealer) > 14) {
