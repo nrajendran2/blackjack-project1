@@ -351,6 +351,7 @@ function deal(arr) {
         }
 
     }
+    scoreUpdate()
 }
 
 
@@ -456,6 +457,7 @@ function hit(arr) {
                 break;
             }
             $("#messages").text("You Have Gone Bust").fadeIn(3000);
+
             flip()
             replay()
 
@@ -527,11 +529,14 @@ function start() {
         }
         $("#messages").text("DEFEAT THE DEALER").fadeIn(3000);
         $("#messages").fadeOut(3000);
+        scoreUpdate()
     })
 }
 
-
-
+//Updates score
+function scoreUpdate(){
+    $('#score').text(`Player count: ${sumCards(gameBoardPlayer)}`)
+}
 
 
 //Function that adds card to player board
@@ -554,7 +559,6 @@ function flip(){
 
 
 start()
-
 
 
 
