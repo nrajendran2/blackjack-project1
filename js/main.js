@@ -367,20 +367,21 @@ function replay() {
     $('#standButton').css('visibility', 'hidden')
     $('#menu').append($('<button id="replay">Replay?</button>'))
     $('#replay').on('click', () => {
-        $('body').css('background-image', 'url(http://moziru.com/images/wild-west-clipart-western-background-16.jpg)')
-        $('body').css('background-position', 'center')
-        $('h1').css('font-size', '100px')
+        location.reload()
+        // $('body').css('background-image', 'url(http://moziru.com/images/wild-west-clipart-western-background-16.jpg)')
+        // $('body').css('background-position', 'center')
+        // $('h1').css('font-size', '100px')
 
-        $('#replay').remove()
-        $('img').remove()
-        $('#startButton').show()
-        gameBoardPlayer = [];
-        gameBoardDealer = [];
-        randNum = 0;
-        dealStand = false;
-        playerStand = false;
-        console.log("NEW GMAE")
-        console.log("n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n")
+        // $('#replay').remove()
+        // $('img').remove()
+        // $('#startButton').show()
+        // gameBoardPlayer = [];
+        // gameBoardDealer = [];
+        // randNum = 0;
+        // dealStand = false;
+        // playerStand = false;
+        // console.log("NEW GMAE")
+        // console.log("n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n")
 
     })
 }
@@ -389,19 +390,16 @@ function standWin() {
     if (playerStand === true && dealStand === true && sumCards(gameBoardDealer) > sumCards(gameBoardPlayer)) {
         // alert("The dealer has won")
         $("#messages").text("The Dealer Has Won").fadeIn(3000);
-        $("#messages").fadeOut(3000);
         replay()
     }
     else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)) {
         // alert("You have defeated the dealer!")
         $("#messages").text("You Have Defeated The Dealer").fadeIn(3000);
-        $("#messages").fadeOut(3000);
         replay()
     }
     else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) === sumCards(gameBoardDealer)) {
         // alert("The game is a tie")
         $("#messages").text("Tie").fadeIn(3000);
-        $("#messages").fadeOut(3000);
         replay()
     }
 }
@@ -450,7 +448,6 @@ function hit(arr) {
         if (sumCards(gameBoardPlayer) > 21) {
             // alert("You have gone bust!")
             $("#messages").text("You Have Gone Bust").fadeIn(3000);
-            $("#messages").fadeOut(3000);
             replay()
 
         }

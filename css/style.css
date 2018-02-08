@@ -21,18 +21,22 @@ h1{
     display:flex;
     justify-content: center;
     align-items: center;
-
-    flex-direction: column;
 }
 
 button{
     font-family: 'Creepster', cursive;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(200, 71, 255, 0.5) ), black;
-    color: rgb(201, 255, 193);
+    background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(255, 125, 125, 0.504) ), black;
+    color: rgb(255, 255, 255);
     border: none;
+    box-shadow: 2px 2px black;
     border-radius: 3px;
     font-size: 40px;
     margin: 20px;
+}
+
+button:hover{
+    background-color: rgba(0, 0, 0, 0.764);
+    color: rgb(255, 0, 0);
 }
 
 body{
@@ -86,7 +90,8 @@ p{
 
 #gameBoard{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #player, #dealer{
