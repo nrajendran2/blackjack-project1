@@ -84,7 +84,7 @@ const cards = [
     {
         suit: "diamonds",
         name: "ace",
-        image: 'images/AD.png',
+        image: 'images/ace_D.png',
         value: 11
     },
     {
@@ -449,12 +449,19 @@ function hit(arr) {
         setPlayerCard()
         if (sumCards(gameBoardPlayer) > 21) {
             // alert("You have gone bust!")
+            for(i = 0; i < gameBoardPlayer.length; i++){
+                if(gameBoardPlayer[i].name === 'ace' ){
+                    gameBoardPlayer[i].value === 1;
+                }
+                break;
+            }
             $("#messages").text("You Have Gone Bust").fadeIn(3000);
             flip()
             replay()
 
         }
         else if (sumCards(gameBoardPlayer) <= 21) {
+            playerStand = false;
             dealerTurn()
         }
     })
@@ -485,6 +492,8 @@ function start() {
         $('body').css('background-image', 'url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4661956.jpg)')
         $('body').css('background-position', 'center top')
         $('h1').css('font-size', '30px')
+        $('h1').attr('id', 'header')
+
         $('#gameButtons').prepend('<p>Player Count: </p>')
         $('p').first().attr('id', 'score')
         $('#hitButton').css('visibility', 'visible')
@@ -517,7 +526,7 @@ function start() {
             }
         }
         $("#messages").text("DEFEAT THE DEALER").fadeIn(3000);
-        $("#messages").fadeOut(5000);
+        $("#messages").fadeOut(3000);
     })
 }
 
@@ -545,6 +554,9 @@ function flip(){
 
 
 start()
+
+
+
 
 
 
