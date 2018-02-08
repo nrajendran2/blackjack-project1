@@ -8,7 +8,7 @@ and two cards will be dispersed to you and the dealer each.
 
 The goal is to get as close to 21 as possible without going bust! 
 
-Here is the site on BitBalloon: http://heuristic-sammet-94fec4.bitballoon.com/
+Here is the site on BitBalloon: http://wonderful-sammet-f7bff9.bitballoon.com/
 
 My Trello: https://trello.com/b/5Ydt8Rnm/blackjack-murphy
 
