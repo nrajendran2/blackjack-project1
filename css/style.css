@@ -164,12 +164,9 @@ body{
         margin-top: 200px;
         font-size: 3em;
     }
-    /* #footer{
-        visibility: hidden;
-    } */
+
 
 }
-
 
 @media (max-width: 550px){
     img{
