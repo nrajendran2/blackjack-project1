@@ -393,7 +393,7 @@ function standWin() {
         flip()
         replay()
     }
-    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer)) {
+    else if (playerStand === true && dealStand === true && sumCards(gameBoardPlayer) > sumCards(gameBoardDealer) || sumCards(gameBoardDealer) > 21) {
         // alert("You have defeated the dealer!")
         $("#messages").text("You Have Defeated The Dealer").fadeIn(3000);
         flip()
