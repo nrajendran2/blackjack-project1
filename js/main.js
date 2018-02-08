@@ -550,13 +550,6 @@ function flip(){
     $('#back').attr('src', gameBoardDealer[0].image)
 }
 
-// $(document).ready(function(){
-//     $('#messages').animate({ // call animate function on elements 
-//        left: $(document).width() // animates right value from the original -200px(from css) to the documents width(ie if elements right value = the document width, then element is off screen)
-//     }, 6000); // 3000 is duration in milliseconds (ie 3 seconds)
-  
-//   });
-
 
 start()
 
