@@ -339,7 +339,6 @@ function deal(arr) {
 
     for (i = 0; i < arr.length; i++) {
         randNum = Math.floor(Math.random() * cards.length)
-
         if (cards[randNum].image !== arr[i].image && cards[randNum].image !== gameBoardDealer[i].image && cards[randNum].image !== gameBoardPlayer[i].image) {
             arr.push(cards[randNum])
             //
@@ -482,7 +481,8 @@ function start() {
         $('body').css('background-image', 'url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4661956.jpg)')
         $('body').css('background-position', 'center top')
         $('h1').css('font-size', '30px')
-
+        $('#gameButtons').prepend('<p>Player Count: </p>')
+        $('p').first().attr('id', 'score')
         $('#hitButton').css('visibility', 'visible')
         $('#standButton').css('visibility', 'visible')
         randNum = Math.floor(Math.random() * cards.length)
@@ -503,8 +503,16 @@ function start() {
         }
         for (i = 0; i < gameBoardDealer.length; i++) {
             $('#dealer').append($('<img />'))
-            $('img').eq(i).attr('src', gameBoardDealer[i].image)
+            if (i === 0) {
+                $('img').eq(i).attr('src', 'images/blue_back.png')
+
+            }
+            else {
+                $('img').eq(i).attr('src', gameBoardDealer[i].image)
+            }
         }
+        $("#messages").text("DEFEAT THE DEALER").fadeIn(3000);
+        $("#messages").fadeOut(5000);
     })
 }
 
@@ -519,6 +527,12 @@ function setPlayerCard() {
 
 }
 
+// $(document).ready(function(){
+//     $('#messages').animate({ // call animate function on elements 
+//        left: $(document).width() // animates right value from the original -200px(from css) to the documents width(ie if elements right value = the document width, then element is off screen)
+//     }, 6000); // 3000 is duration in milliseconds (ie 3 seconds)
+  
+//   });
 
 
 start()
